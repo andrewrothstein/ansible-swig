@@ -1,0 +1,4 @@
+---
+# defaults file for swig
+swig_ver : '3.0.8'
+swig_mirror : 'http://downloads.sourceforge.net/project/swig/swig'
