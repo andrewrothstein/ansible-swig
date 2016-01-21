@@ -1,4 +1,18 @@
 ---
+- name: (Debian) install deps
+  when: ansible_os_family == 'Debian'
+  apt: name={{item}} state=latest
+  with_items:
+    - libpcre3
+    - libpcre3-dev
+
+- name: (RedHat) install desp
+  when: ansible_os_family == 'RedHat'
+  yum: name={{item}} state=latest
+  with_items:
+    - pcre
+    - pcre-devel
+    
 - name: download tgz...
   get_url: >-
     url={{swig_tgz_url}}
