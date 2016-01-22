@@ -21,7 +21,6 @@
 
 - name: fix tgz perms...
   file: >-
-    state=present
     path=/tmp/{{swig_tgz}}
     owner=root
     group=root
