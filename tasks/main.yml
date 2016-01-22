@@ -14,9 +14,15 @@
     - pcre-devel
     
 - name: download tgz...
-  get_url: >-
-    url={{swig_tgz_url}}
-    dest=/tmp/{{swig_tgz}}
+  command: >-
+    curl -sL {{swig_tgz_url}} -o /tmp/{{swig_tgz}}
+  args:
+    creates: /tmp/{{swig_tgz}}
+
+- name: fix tgz perms...
+  file: >-
+    state=present
+    path=/tmp/{{swig_tgz}}
     owner=root
     group=root
     mode=0644
