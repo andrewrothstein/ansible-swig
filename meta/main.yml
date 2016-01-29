@@ -24,4 +24,5 @@ galaxy_info:
 
 dependencies:
   - andrewrothstein.curl
+  - andrewrothstein.unarchive-deps
   
