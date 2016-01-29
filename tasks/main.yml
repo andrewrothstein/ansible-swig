@@ -5,13 +5,15 @@
   with_items:
     - libpcre3
     - libpcre3-dev
+    - g++
 
 - name: (RedHat) install desp
   when: ansible_os_family == 'RedHat'
-  yum: name={{item}} state=latest
+  package: name={{item}} state=latest
   with_items:
     - pcre
     - pcre-devel
+    - gcc-c++
     
 - name: download tgz...
   command: >-
