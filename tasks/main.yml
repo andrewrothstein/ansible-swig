@@ -1,7 +1,7 @@
 ---
 - name: (Debian) install deps
   when: ansible_os_family == 'Debian'
-  apt: name={{item}} state=latest
+  package: name={{item}} state=present
   with_items:
     - libpcre3
     - libpcre3-dev
@@ -9,7 +9,7 @@
 
 - name: (RedHat) install desp
   when: ansible_os_family == 'RedHat'
-  package: name={{item}} state=latest
+  package: name={{item}} state=present
   with_items:
     - pcre
     - pcre-devel
@@ -36,6 +36,7 @@
     owner=root
     group=root
     mode=0755
+    creates={{swig_dir}}
 
 - name: building...
   with_items:
