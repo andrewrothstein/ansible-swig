@@ -7,7 +7,7 @@
     - libpcre3-dev
     - g++
 
-- name: (RedHat) install desp
+- name: (RedHat) install deps
   when: ansible_os_family == 'RedHat'
   package: name={{item}} state=present
   with_items:
@@ -16,14 +16,9 @@
     - gcc-c++
     
 - name: download tgz...
-  command: >-
-    curl -sL {{swig_tgz_url}} -o /tmp/{{swig_tgz}}
-  args:
-    creates: /tmp/{{swig_tgz}}
-
-- name: fix tgz perms...
-  file: >-
-    path=/tmp/{{swig_tgz}}
+  get_url: >-
+    url={{swig_tgz_url}}
+    dest=/tmp/{{swig_tgz}}
     owner=root
     group=root
     mode=0644
