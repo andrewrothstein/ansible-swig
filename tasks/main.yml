@@ -23,15 +23,11 @@
     group=root
     mode=0644
     
-- name: install src...
-  unarchive: >-
-    copy=no
-    src=/tmp/{{swig_tgz}}
-    dest=/opt
-    owner=root
-    group=root
-    mode=0755
-    creates={{swig_dir}}
+- name: unarchive src...
+  command: >-
+    tar zxvf /tmp/{{swig_tgz}} -C /opt
+  args:
+    creates: '{{swig_dir}}'
 
 - name: building...
   with_items:
