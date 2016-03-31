@@ -25,10 +25,13 @@
     timeout=300
     
 - name: unarchive src...
-  command: >-
-    tar zxvf /tmp/{{swig_tgz}} -C /opt
-  args:
-    creates: '{{swig_dir}}'
+  unarchive: >-
+    copy=no
+    src=/tmp/{{swig_tgz}}
+    dest=/opt
+    owner=root
+    group=root
+    creates={{swig_dir}}
 
 - name: building...
   with_items:
