@@ -1,39 +1,38 @@
 ---
-- name: (Debian) install deps
-  when: ansible_os_family == 'Debian'
-  package: name={{item}} state=present
-  with_items:
-    - libpcre3
-    - libpcre3-dev
-    - g++
+- name: resolve platform specific vars
+  include_vars: "{{item}}"
+  with_first_found:
+    - "{{ansible_distribution}}-{{ansible_distribution_release}}.yml"
+    - "{{ansible_distribution}}.yml"
+    - "{{ansible_os_family}}.yml"
 
-- name: (RedHat) install deps
-  when: ansible_os_family == 'RedHat'
+- name: install pkg deps
+  become: yes
+  become_user: root
   package: name={{item}} state=present
-  with_items:
-    - pcre
-    - pcre-devel
-    - gcc-c++
-    
+  with_items: '{{swig_dep_pkgs}}'
+
 - name: download tgz...
+  become: yes
+  become_user: root
   get_url: >-
     url={{swig_tgz_url}}
     dest=/tmp/{{swig_tgz}}
-    owner=root
-    group=root
     mode=0644
     timeout=300
     
 - name: unarchive src...
+  become: yes
+  become_user: root
   unarchive: >-
     copy=no
     src=/tmp/{{swig_tgz}}
     dest=/opt
-    owner=root
-    group=root
     creates={{swig_dir}}
 
 - name: building...
+  become: yes
+  become_user: root
   with_items:
     - ./configure
     - make
