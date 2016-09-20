@@ -30,15 +30,29 @@
     dest=/opt
     creates={{swig_dir}}
 
+- name: configuring...
+  become: yes
+  become_user: root
+  command: ./configure
+  args:
+    chdir: '{{swig_dir}}'
+    creates: '{{swig_dir}}/CCache/Makefile'
+
 - name: building...
   become: yes
   become_user: root
-  with_items:
-    - ./configure
-    - make
-    - make install
-  command: '{{item}}'
+  command: make
   args:
     chdir: '{{swig_dir}}'
+    creates: '{{swig_dir}}/swig'
+
+- name: building...
+  become: yes
+  become_user: root
+  command: make install
+  args:
+    chdir: '{{swig_dir}}'
+    creates: /usr/local/bin/swig
+
 
     
