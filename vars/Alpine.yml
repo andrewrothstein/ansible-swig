@@ -1,4 +1,4 @@
 ---
+swig_installer: pkg
 swig_pkgs:
   - swig
-swig_installer: pkg
