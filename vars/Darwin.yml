@@ -1,0 +1,3 @@
+---
+swig_installer: pkg
+swig_privilege_escalate: False

@@ -1,0 +1,48 @@
+---
+- name: install pkg deps
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  package: name={{item}} state=present
+  with_items: '{{swig_dep_pkgs}}'
+
+- name: download tgz...
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  get_url: >-
+    url={{swig_tgz_url}}
+    dest=/tmp/{{swig_tgz}}
+    mode=0644
+    timeout=300
+    
+- name: unarchive src...
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  unarchive: >-
+    copy=no
+    src=/tmp/{{swig_tgz}}
+    dest=/opt
+    creates={{swig_dir}}
+
+- name: configuring...
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  command: ./configure
+  args:
+    chdir: '{{swig_dir}}'
+    creates: '{{swig_dir}}/CCache/Makefile'
+
+- name: building...
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  command: make
+  args:
+    chdir: '{{swig_dir}}'
+    creates: '{{swig_dir}}/swig'
+
+- name: building...
+  become: '{{swig_privilege_escalate}}'
+  become_user: root
+  command: make install
+  args:
+    chdir: '{{swig_dir}}'
+    creates: /usr/local/bin/swig
