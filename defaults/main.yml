@@ -1,5 +1,5 @@
 ---
 # defaults file for swig
-swig_ver : '3.0.10'
-swig_mirror : 'http://ufpr.dl.sourceforge.net/project/swig/swig'
+swig_ver : '3.0.11'
+swig_mirror : http://ufpr.dl.sourceforge.net/project/swig/swig
 swig_privilege_escalate: True
