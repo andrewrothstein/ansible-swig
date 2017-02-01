@@ -2,26 +2,29 @@
 - name: install pkg deps
   become: '{{swig_privilege_escalate}}'
   become_user: root
-  package: name={{item}} state=present
   with_items: '{{swig_dep_pkgs}}'
+  package:
+    name: '{{item}}'
+    state: present
 
 - name: download tgz...
   become: '{{swig_privilege_escalate}}'
   become_user: root
-  get_url: >-
-    url={{swig_tgz_url}}
-    dest=/tmp/{{swig_tgz}}
-    mode=0644
-    timeout=300
+  get_url:
+    url: '{{swig_tgz_url}}'
+    dest: /tmp/{{swig_tgz}}
+    mode: '0644'
+    checksum: '{{swig_checksum}}'
+    timeout: '{{swig_download_timeout_seconds}}'
     
 - name: unarchive src...
   become: '{{swig_privilege_escalate}}'
   become_user: root
-  unarchive: >-
-    copy=no
-    src=/tmp/{{swig_tgz}}
-    dest=/opt
-    creates={{swig_dir}}
+  unarchive:
+    copy: no
+    src: /tmp/{{swig_tgz}}
+    dest: '{{swig_build_parent_dir}}'
+    creates: '{{swig_dir}}'
 
 - name: configuring...
   become: '{{swig_privilege_escalate}}'

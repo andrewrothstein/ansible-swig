@@ -1,7 +1,7 @@
 andrewrothstein.swig
 ===========================
 
-A role for installing [Swig](http://http://www.swig.org/)
+A role for installing [Swig](http://http://www.swig.org/) from source.
 
 Requirements
 ------------

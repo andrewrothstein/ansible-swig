@@ -1,6 +1,6 @@
 ---
 # vars file for swig
-swig_name : 'swig-{{swig_ver}}'
+swig_name : swig-{{swig_ver}}
 swig_tgz : '{{swig_name}}.tar.gz'
 swig_tgz_url : '{{swig_mirror}}/swig-{{swig_ver}}/{{swig_tgz}}'
-swig_dir : '/opt/{{swig_name}}'
+swig_dir : '{{swig_build_parent_dir}}/{{swig_name}}'
