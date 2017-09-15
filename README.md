@@ -1,5 +1,6 @@
 andrewrothstein.swig
 ===========================
+[![Build Status](https://travis-ci.org/andrewrothstein/ansible-swig.svg?branch=master)](https://travis-ci.org/andrewrothstein/ansible-swig)
 
 A role for installing [Swig](http://http://www.swig.org/) from source.
 
