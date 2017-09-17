@@ -1,5 +1,4 @@
 ---
 swig_dep_pkgs:
-  - libpcre3
   - libpcre3-dev
-  - g++
+
