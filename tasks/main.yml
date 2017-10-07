@@ -10,7 +10,7 @@
       paths:
         - '{{role_path}}/vars'
 
-- includ: '{{swig_installer | default("tgz")}}.yml'
+- include: '{{swig_installer | default("tgz")}}.yml'
 
 
     
