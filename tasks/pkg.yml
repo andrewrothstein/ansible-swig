@@ -1,6 +1,7 @@
 ---
 - name: install swig pkgs
-  become: '{{swig_privilege_escalate}}'
+  become: '{{ swig_privilege_escalate }}'
   become_user: root
-  with_items: '{{swig_pkgs}}'
-  package: name={{item}} state=present
+  package:
+    name: '{{ swig_pkgs }}'
+    state: present

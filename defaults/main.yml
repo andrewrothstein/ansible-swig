@@ -1,8 +1,9 @@
 ---
 # defaults file for swig
-swig_ver : '3.0.12'
+swig_ver : '4.0.0'
 swig_mirror : http://ufpr.dl.sourceforge.net/project/swig/swig
-swig_checksum: sha256:7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d
+swig_checksums:
+  '3.0.12': sha256:7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d
 swig_privilege_escalate: True
 swig_download_timeout_seconds: 300
 swig_build_parent_dir: /usr/local
