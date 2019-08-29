@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-VER=4.0.0
+VER=4.0.1
 DIR=~/Downloads
 MIRROR=http://ufpr.dl.sourceforge.net/project/swig/swig
 FILE=swig-${VER}.tar.gz
