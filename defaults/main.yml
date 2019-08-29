@@ -1,7 +1,7 @@
 ---
 # defaults file for swig
-swig_ver : '4.0.1'
-swig_mirror : http://ufpr.dl.sourceforge.net/project/swig/swig
+swig_ver: '4.0.1'
+swig_mirror: http://ufpr.dl.sourceforge.net/project/swig/swig
 swig_checksums:
   '3.0.12': sha256:7cf9f447ae7ed1c51722efc45e7f14418d15d7a1e143ac9f09a668999f4fc94d
   # http://ufpr.dl.sourceforge.net/project/swig/swig/swig-4.0.0/swig-4.0.0.tar.gz

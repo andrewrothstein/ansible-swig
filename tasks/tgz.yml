@@ -15,7 +15,7 @@
     mode: '0644'
     checksum: '{{ swig_checksum }}'
     timeout: '{{ swig_download_timeout_seconds }}'
-    
+
 - name: unarchive src...
   become: '{{ swig_privilege_escalate }}'
   become_user: root
