@@ -1,15 +1,20 @@
 #!/usr/bin/env sh
-VER=4.0.2
 DIR=~/Downloads
 MIRROR=http://ufpr.dl.sourceforge.net/project/swig/swig
-FILE=swig-${VER}.tar.gz
-LFILE=$DIR/$FILE
-URL=$MIRROR/swig-${VER}/${FILE}
 
-if [ ! -e $LFILE ]
-then
-    wget -q -O $LFILE $URL
-fi
+dl_ver () {
+    local ver=$1
+    local file="swig-${ver}.tar.gz"
+    local lfile=$DIR/$file
+    local url=$MIRROR/swig-${ver}/${file}
 
-printf "  # %s\n" $URL
-printf "  '%s': sha256:%s\n" $VER `sha256sum $LFILE | awk '{print $1}'`
+    if [ ! -e $lfile ]
+    then
+        wget -q -O $lfile $url
+    fi
+
+    printf "  # %s\n" $url
+    printf "  '%s': sha256:%s\n" $ver `sha256sum $lfile | awk '{print $1}'`
+}
+
+dl_ver ${1:-4.0.2}
