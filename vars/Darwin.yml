@@ -2,4 +2,4 @@
 swig_installer: pkg
 swig_pkgs:
   - swig
-swig_privilege_escalate: False
+swig_privilege_escalate: false

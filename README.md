@@ -2,7 +2,7 @@ andrewrothstein.swig
 ===========================
 ![Build Status](https://github.com/andrewrothstein/ansible-swig/actions/workflows/build.yml/badge.svg)
 
-Installs and builds [Swig](http://http://www.swig.org/) from source.
+Installs [Swig](http://http://www.swig.org/).
 
 Requirements
 ------------

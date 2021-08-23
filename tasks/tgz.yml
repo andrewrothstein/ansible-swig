@@ -1,39 +1,39 @@
 ---
-- name: install pkg deps
+- name: installing OS pkg deps
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   package:
     name: '{{ swig_dep_pkgs }}'
     state: present
 
-- name: download tgz...
+- name: downloading {{ swig_tgz_url }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   get_url:
     url: '{{ swig_tgz_url }}'
-    dest: /tmp/{{ swig_tgz }}
+    dest: '{{ swig_tmp_tgz }}'
     mode: '0644'
     checksum: '{{ swig_checksum }}'
     timeout: '{{ swig_download_timeout_seconds }}'
 
-- name: unarchive src...
+- name: unarchiving {{ swig_tmp_tgz }} to {{ swig_build_parent_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   unarchive:
     remote_src: yes
-    src: /tmp/{{ swig_tgz }}
+    src: '{{ swig_tmp_tgz }}'
     dest: '{{ swig_build_parent_dir }}'
     creates: '{{ swig_dir }}'
 
-- name: configuring...
+- name: configuring in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  command: ./configure
+  command: '{{ swig_dir }}/configure'
   args:
     chdir: '{{ swig_dir }}'
     creates: '{{ swig_dir }}/CCache/Makefile'
 
-- name: building...
+- name: building with make in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   command: make
@@ -41,7 +41,7 @@
     chdir: '{{ swig_dir }}'
     creates: '{{ swig_dir }}/swig'
 
-- name: building...
+- name: installing with make in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   command: make install

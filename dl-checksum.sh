@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+set -e
 DIR=~/Downloads
 MIRROR=http://ufpr.dl.sourceforge.net/project/swig/swig
 
@@ -14,7 +15,7 @@ dl_ver () {
     fi
 
     printf "  # %s\n" $url
-    printf "  '%s': sha256:%s\n" $ver `sha256sum $lfile | awk '{print $1}'`
+    printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
 }
 
 dl_ver ${1:-4.0.2}

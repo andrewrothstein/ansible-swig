@@ -2,7 +2,7 @@
 # defaults file for swig
 swig_ver: 4.0.2
 swig_mirror: http://ufpr.dl.sourceforge.net/project/swig/swig
-swig_privilege_escalate: True
+swig_privilege_escalate: true
 swig_download_timeout_seconds: 300
 swig_build_parent_dir: /usr/local
 swig_checksums:
