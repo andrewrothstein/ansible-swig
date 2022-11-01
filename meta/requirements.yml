@@ -1,0 +1,6 @@
+---
+dependencies:
+- name: andrewrothstein.unarchive-deps
+  version: v1.2.4
+- name: andrewrothstein.gcc-toolbox
+  version: v1.1.9

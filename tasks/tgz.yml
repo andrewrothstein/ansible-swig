@@ -1,4 +1,8 @@
 ---
+- include_role:
+    name: andrewrothstein.unarchive-deps
+- include_role:
+    name: andrewrothstein.gcc-toolbox
 - name: installing OS pkg deps
   become: '{{ swig_privilege_escalate }}'
   become_user: root
@@ -20,7 +24,7 @@
   become: '{{ swig_privilege_escalate }}'
   become_user: root
   unarchive:
-    remote_src: yes
+    remote_src: true
     src: '{{ swig_tmp_tgz }}'
     dest: '{{ swig_build_parent_dir }}'
     creates: '{{ swig_dir }}'
