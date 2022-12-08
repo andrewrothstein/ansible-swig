@@ -1,6 +1,6 @@
 ---
 # defaults file for swig
-swig_ver: 4.1.0
+swig_ver: 4.1.1
 swig_mirror: http://ufpr.dl.sourceforge.net/project/swig/swig
 swig_privilege_escalate: true
 swig_download_timeout_seconds: 300
@@ -15,3 +15,5 @@ swig_checksums:
   '4.0.2': sha256:d53be9730d8d58a16bf0cbd1f8ac0c0c3e1090573168bfa151b01eb47fa906fc
   # http://ufpr.dl.sourceforge.net/project/swig/swig/swig-4.1.0/swig-4.1.0.tar.gz
   '4.1.0': sha256:d6a9a8094e78f7cfb6f80a73cc271e1fe388c8638ed22668622c2c646df5bb3d
+  # http://ufpr.dl.sourceforge.net/project/swig/swig/swig-4.1.1/swig-4.1.1.tar.gz
+  '4.1.1': sha256:2af08aced8fcd65cdb5cc62426768914bedc735b1c250325203716f78e39ac9b
