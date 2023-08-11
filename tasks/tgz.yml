@@ -1,8 +1,8 @@
 ---
 - include_role:
-    name: andrewrothstein.unarchive-deps
+    name: andrewrothstein.unarchivedeps
 - include_role:
-    name: andrewrothstein.gcc-toolbox
+    name: andrewrothstein.gcc_toolbox
 - name: installing OS pkg deps
   become: '{{ swig_privilege_escalate }}'
   become_user: root
