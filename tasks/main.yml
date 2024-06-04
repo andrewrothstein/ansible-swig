@@ -1,6 +1,6 @@
 ---
-- name: resolve platform specific vars
-  include_vars: '{{ item }}'
+- name: Resolve platform specific vars
+  ansible.builtin.include_vars: '{{ item }}'
   with_first_found:
     - files:
         - '{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
@@ -10,4 +10,5 @@
       paths:
         - '{{ role_path }}/vars'
 
-- include_tasks: '{{ swig_installer | default("tgz") }}.yml'
+- name: Installing...
+  ansible.builtin.include_tasks: '{{ swig_installer | default("tgz") }}.yml'

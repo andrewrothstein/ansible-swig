@@ -1,54 +1,56 @@
 ---
-- include_role:
+- name: Installing andrewrothstein.unarchivedeps
+  ansible.builtin.include_role:
     name: andrewrothstein.unarchivedeps
-- include_role:
+- name: Installing andrewrothstein.gcc_toolbox
+  ansible.builtin.include_role:
     name: andrewrothstein.gcc_toolbox
-- name: installing OS pkg deps
+- name: Installing OS pkg deps
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ swig_dep_pkgs }}'
     state: present
 
-- name: downloading {{ swig_tgz_url }}
+- name: Downloading {{ swig_tgz_url }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  get_url:
+  ansible.builtin.get_url:
     url: '{{ swig_tgz_url }}'
     dest: '{{ swig_tmp_tgz }}'
-    mode: '0644'
+    mode: '644'
     checksum: '{{ swig_checksum }}'
     timeout: '{{ swig_download_timeout_seconds }}'
 
-- name: unarchiving {{ swig_tmp_tgz }} to {{ swig_build_parent_dir }}
+- name: Unarchiving {{ swig_tmp_tgz }} to {{ swig_build_parent_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  unarchive:
+  ansible.builtin.unarchive:
     remote_src: true
     src: '{{ swig_tmp_tgz }}'
     dest: '{{ swig_build_parent_dir }}'
     creates: '{{ swig_dir }}'
 
-- name: configuring in {{ swig_dir }}
+- name: Configuring in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  command: '{{ swig_dir }}/configure'
+  ansible.builtin.command: '{{ swig_dir }}/configure'
   args:
     chdir: '{{ swig_dir }}'
     creates: '{{ swig_dir }}/CCache/Makefile'
 
-- name: building with make in {{ swig_dir }}
+- name: Building with make in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  command: make
+  ansible.builtin.command: make
   args:
     chdir: '{{ swig_dir }}'
     creates: '{{ swig_dir }}/swig'
 
-- name: installing with make in {{ swig_dir }}
+- name: Installing with make in {{ swig_dir }}
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  command: make install
+  ansible.builtin.command: make install
   args:
     chdir: '{{ swig_dir }}'
     creates: /usr/local/bin/swig

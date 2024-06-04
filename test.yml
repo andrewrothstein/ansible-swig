@@ -1,4 +1,5 @@
 ---
-- hosts: all
+- name: Testing andrewrothstein.swig
+  hosts: all
   roles:
     - role: '{{ playbook_dir }}'

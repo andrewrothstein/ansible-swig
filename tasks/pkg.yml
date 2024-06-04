@@ -1,7 +1,7 @@
 ---
-- name: install swig pkgs
+- name: Install swig pkgs
   become: '{{ swig_privilege_escalate }}'
   become_user: root
-  package:
+  ansible.builtin.package:
     name: '{{ swig_pkgs }}'
     state: present
