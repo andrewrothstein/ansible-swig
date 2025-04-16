@@ -1,3 +1,4 @@
 ---
 swig_dep_pkgs:
   - pcre2-devel
+  - gawk
